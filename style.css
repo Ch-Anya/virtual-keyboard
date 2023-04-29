@@ -1,0 +1,59 @@
+:root {
+    --neon: hsl(317 100% 54%);
+    --neon-background: hsl(323, 43%, 15%);
+}
+* {
+    background: var(--neon-background);
+    color: var(--neon);
+}
+.keyboard {
+    width: 100%;
+    padding: 5px 0px;
+    background: var(--neon-background);
+}
+.keyboard__keys {
+    text-align: center;
+}
+.keyboard__key {
+    width: 6%;
+    max-width: 90px;
+    height: 45px;
+    margin: 3px;
+    border-radius: 4px;
+    background: var(--neon);
+    color: #ffffff;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    padding: 0px;
+    position: relative;
+}
+.keyboard__key:active {
+    background: green;
+}
+.keyboard__key-wide {
+    width: 12%;
+}
+.keuboard__key-extra-wide {
+    width: 36%;
+    max-width: 500px;
+}
+.keyboard__key-activated::after {
+    content: '';
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: blue;
+    border-radius: 50px;
+}
+
+.keyboard__key-active::after {
+    background-color: #98cb17;
+}
+.keyboard__key-dark {
+    background-color: #7ac5bc;
+}
