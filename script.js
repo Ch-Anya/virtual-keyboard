@@ -1,7 +1,3 @@
-// let input = document.createElement('input');
-// document.body.append(input);
-// input.classList.add('use-keyboard-input')
-
 const Keyboard = {
     input: {
         input: null
@@ -36,7 +32,7 @@ const Keyboard = {
         document.body.append(this.elements.main);
         document.querySelectorAll('.input').forEach(element=>{
             element.addEventListener('focus', () => {
-                this(element.value, currentValue => {
+                this.active(element.value, currentValue => {
                     element.value = currentValue;
                 })
             });
@@ -50,10 +46,7 @@ const Keyboard = {
     'Caps Lock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter',
     'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?',
     'Ctrl', 'Alt', 'Space' ] 
-//         const keyLayout=[192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8, 9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220,
-//         20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 13,
-//     16, 90, 88, 67, 86, 78, 66, 77, 188, 190, 191, 16, 38,
-// 17, 18, 32, 37, 40, 39];
+
 
         keyList.forEach(key => {
             const keyElement = document.createElement('button');
@@ -61,5 +54,74 @@ const Keyboard = {
             keyElement.setAttribute('type', 'button');
             keyElement.classList.add('keyboard__key');
             switch (key) {
+                case 'Backspace':
+                keyElement.innerHTML='Backspace';
+                keyElement.addEventListener('click', () => {
+                    this.properties.value=this.properties.value.substring(0, this.properties.value.length -1);
+                    this._event('oninput');
+                })
+                break;
+            
+                case 'Caps Lock':
+                keyElement.innerHTML='Caps Lock';
+                keyElement.addEventListener('click', () => {
+                    this._capsLock();
+                    keyElement.classList.toggle(this.properties.capsLock)
+                })
+                break;
+            
+                case 'Enter': 
+                keyElement.innerHTML='Enter';
+                keyElement.addEventListener('click', () => {
+                    this.properties.value += '\n';
+                    this._event('oninput');
+                })
+                break;
+            
+                case 'Space':
+                keyElement.innerHTML='Space';
+                keyElement.addEventListener('click', () => {
+                    this.properties.value += ' ';
+                    this._event('oninput');
+                })
+                break;
+
+            
+                default:
+                keyElement.textContent=key.toLowerCase();
+                keyElement.addEventListener('click', () => {
+                    this.properties.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
+                    this._event('oninput');
+                })
+                break;
             }
+            fragment.append(keyElement);
+            
+            if (lineBreak) {
+                fragment.append(document.createElement('br'));
+            }
+          })
+    return fragment;
+    },
+
+
+    _event(handlerName) {
+        if (typeof this.eventHandlers[handlerName] == 'function') {
+            this.eventHandlers[handlerName](this.properties.value);
+        }
+    },
+    
+    _capsLock() {
+        this.properties.capsLock = !this.properties.capsLock;
+        for (const key of this.elements.keys) {
+            key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+        }
+    },
+    active(initialValue, oninput) {
+        this.properties.value = initialValue || '';
+        this.eventHandlers.oninput=oninput;
+    },
+}
+window.addEventListener('DOMContentLoaded', function() {
+    Keyboard.init();
 })
