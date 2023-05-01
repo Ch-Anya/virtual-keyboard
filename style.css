@@ -22,6 +22,7 @@
 .keyboard__keys {
     text-align: center;
 }
+
 .keyboard__key {
     width: 6%;
     max-width: 400px;
@@ -44,6 +45,7 @@
     position: relative;
 }
 .keyboard__key:active {
+    transition: 0.1s;
     background: var(--neon);
     color: var(--neon-background);
 }
@@ -71,3 +73,13 @@
     box-shadow: 0 0 0.5em var(--neon);
     text-shadow: 0 0 0.125em var(--neon);
 }
+
+.hidden {
+    display: none;
+}
+
+.text {
+    margin: 0.5% 24% 0;
+}
+
+
