@@ -1,0 +1,25 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint script.js",
+    "lint:fix": "eslint script.js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ch-Anya/virtual-keyboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ch-Anya/virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/Ch-Anya/virtual-keyboard#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb": "^19.0.4"
+  }
+}

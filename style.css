@@ -1,0 +1,82 @@
+:root {
+    --neon: hsl(317 100% 54%);
+    --neon-background: hsl(323, 43%, 15%);
+}
+* {
+    background: var(--neon-background);
+    color: var(--neon);
+}
+.keyboard {
+    width: 100%;
+    height: 100%;
+    margin: 28% auto 0%;
+    padding: 5px 0px;
+    background: var(--neon-background);
+    box-shadow: 0 0 2em 0.5em var(--neon);
+}
+
+.keyboard__key-small {
+    text-transform: lowercase;
+}
+
+.keyboard__keys {
+    text-align: center;
+}
+
+.keyboard__key {
+    width: 6%;
+    max-width: 400px;
+    cursor: pointer;
+    height: 45px;
+    margin: 3px;
+    border-radius: 8px;
+    border: var(--neon) solid 3px;
+    font-size: 1.01em;
+    color: var(--neon);
+    text-shadow: 0 0 0.125em var(--neon);
+    box-shadow: inset 0 0 0.5em 0 var(--neon),
+    0 0 0.4em 0 var(--neon);
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    padding: 0px;
+    position: relative;
+}
+.keyboard__key:active {
+    transition: 0.1s;
+    background: var(--neon);
+    color: var(--neon-background);
+}
+
+.space {
+    width: 24.5%;
+}
+
+.ctrl {
+    width: 10%;
+}
+.alt {
+    width: 10%;
+}
+.fn {
+    width: 10%;
+}
+
+.input {
+    resize: none;
+    width: 70%;
+    height: 50px;
+    margin: 0px 15% 0px 15%;
+    border: var(--neon) solid 1px;
+    box-shadow: 0 0 0.5em var(--neon);
+    text-shadow: 0 0 0.125em var(--neon);
+}
+
+.hidden {
+    display: none;
+}
+
+
+
