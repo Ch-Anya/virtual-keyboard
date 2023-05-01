@@ -1,7 +1,6 @@
 const Keyboard = {
 
   elements: {
-    p: null,
     input: null,
     main: null,
     keysContainer: null,
@@ -19,12 +18,8 @@ const Keyboard = {
     this.elements.main = document.createElement('div');
     this.elements.input = document.createElement('textarea');
     this.elements.input.classList.add('input');
-    this.elements.input.setAttribute('placeholder', 'Click on this textarea');
-    this.elements.p = document.createElement('p');
-    this.elements.p.textContent = 'Чтобы начать печатать - нужно нажать на textarea. Чтобы сменить язык - Ctrl + Shift на физической клавиатуре.';
-    this.elements.p.classList.add('text');
+    this.elements.input.setAttribute('placeholder', 'Click on this textarea.\nTo change language - press Ctrl + Shift on physical keyboard.');
     document.body.append(this.elements.input);
-    document.body.append(this.elements.p);
     this.elements.keysContainer = document.createElement('div');
     this.elements.main.classList.add('keyboard');
     this.elements.keysContainer.classList.add('keyboard__keys');
