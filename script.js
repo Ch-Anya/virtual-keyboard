@@ -22,6 +22,7 @@ const Keyboard = {
     this.elements.main = document.createElement('div');
     this.elements.input = document.createElement('textarea');
     this.elements.input.classList.add('input');
+    this.elements.input.setAttribute('placeholder', 'Click on this textarea');
     document.body.append(this.elements.input);
     this.elements.keysContainer = document.createElement('div');
     this.elements.main.classList.add('keyboard');
@@ -45,7 +46,7 @@ const Keyboard = {
       'Tab', 'q', 'w', 'e', 'r', 't', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\',
       'Caps Lock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter',
       'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?', 'Shift', 'up',
-      'Ctrl', 'Alt', 'Space', 'Alt', 'Ctrl'];
+      'Ctrl', 'Fn', 'Alt', 'Space', 'Alt', 'Ctrl', 'left', 'down', 'right'];
 
     keyList.forEach((key) => {
       const keyElement = document.createElement('button');
@@ -55,6 +56,7 @@ const Keyboard = {
       switch (key) {
         case 'Backspace':
           keyElement.innerHTML = 'Backspace';
+          keyElement.classList.add('keyboard__key-small');
           keyElement.addEventListener('click', () => {
             this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
             this.thisEvent('oninput');
@@ -88,23 +90,76 @@ const Keyboard = {
           });
           break;
 
-          case 'Shift':
-            keyElement.innerHTML = 'Shift';
-            keyElement.classList.add('keyboard__key-small');
-            keyElement.addEventListener('click', () => {
-              this.properties.value += '';
-              this.thisEvent('oninput');
-            });
-            break;
+        case 'Shift':
+          keyElement.innerHTML = 'Shift';
+          keyElement.classList.add('keyboard__key-small');
+          keyElement.addEventListener('click', () => {
+            this.properties.value += '';
+            this.thisEvent('oninput');
+          });
+          break;
 
-            case 'Ctrl':
-                keyElement.innerHTML = 'Ctrl';
-                keyElement.classList.add('keyboard__key-small', 'ctrl');
-                keyElement.addEventListener('click', () => {
-                  this.properties.value += '';
-                  this.thisEvent('oninput');
-                });
-                break;
+        case 'up':
+          keyElement.innerHTML = '&#8593;';
+          keyElement.classList.add('keyboard__key-small');
+          keyElement.addEventListener('click', () => {
+            this.properties.value += '';
+            this.thisEvent('oninput');
+          });
+          break;
+
+        case 'Ctrl':
+          keyElement.innerHTML = 'Ctrl';
+          keyElement.classList.add('keyboard__key-small', 'ctrl');
+          keyElement.addEventListener('click', () => {
+            this.properties.value += '';
+            this.thisEvent('oninput');
+          });
+          break;
+        case 'Fn':
+          keyElement.innerHTML = 'Fn';
+          keyElement.classList.add('keyboard__key-small', 'fn');
+          keyElement.addEventListener('click', () => {
+            this.properties.value += '';
+            this.thisEvent('oninput');
+          });
+          break;
+
+        case 'Alt':
+          keyElement.innerHTML = 'Alt';
+          keyElement.classList.add('keyboard__key-small', 'alt');
+          keyElement.addEventListener('click', () => {
+            this.properties.value += '';
+            this.thisEvent('oninput');
+          });
+          break;
+
+        case 'left':
+          keyElement.innerHTML = '&#8592;';
+          keyElement.classList.add('keyboard__key-small');
+          keyElement.addEventListener('click', () => {
+            this.properties.value += '';
+            this.thisEvent('oninput');
+          });
+          break;
+
+        case 'down':
+          keyElement.innerHTML = '&#8595;';
+          keyElement.classList.add('keyboard__key-small');
+          keyElement.addEventListener('click', () => {
+            this.properties.value += '';
+            this.thisEvent('oninput');
+          });
+          break;
+
+        case 'right':
+          keyElement.innerHTML = '&#8594;';
+          keyElement.classList.add('keyboard__key-small');
+          keyElement.addEventListener('click', () => {
+            this.properties.value += '';
+            this.thisEvent('oninput');
+          });
+          break;
 
         case 'Space':
           keyElement.innerHTML = 'Space';
@@ -151,6 +206,7 @@ const Keyboard = {
     this.eventHandlers.oninput = oninput;
   },
 };
+
 window.addEventListener('DOMContentLoaded', () => {
   Keyboard.init();
 });
